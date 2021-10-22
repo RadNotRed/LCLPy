@@ -21,4 +21,3 @@ if args.v != None:
     launch.Launch(str(args.v[0]))
 elif args.edit == True:
     subprocess.Popen(["start","Config.ini"],shell=True)
-    
