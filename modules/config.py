@@ -4,7 +4,7 @@ USERPROFILE=os.environ['USERPROFILE']
 APPDATA=os.environ['APPDATA']
 
 def ConfigExist():
-    if os.path.isfile("Config.ini") is False:
+    if os.path.isfile("Options.ini") is False:
         ConfigCreate()
     
 def ConfigCreate():
@@ -25,13 +25,13 @@ def ConfigCreate():
     config['Optimizations'] = {'Minecraft Launcher Optimizations' : "Off",
                                'LC Cosmetics' : "On"
                                }
-    with open('Config.ini', 'w') as configfile:
+    with open('Options.ini', 'w') as configfile:
         config.write(configfile)
         
 def ConfigRead(Version, Value):
     ConfigExist()
     config = configparser.ConfigParser()
-    config.read('Config.ini')
+    config.read('Options.ini')
     Arguments_String=config['Java']["Arguments"]
     Arguments_List=Arguments_String.split()
 
@@ -62,6 +62,4 @@ def ConfigRead(Version, Value):
     elif Value=="Cosmetics":
         return Cosmetics
     elif Value=="Arguments_List":
-        return Arguments_List    
-    
-    
+        return Arguments_List
