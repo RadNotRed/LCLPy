@@ -6,4 +6,8 @@ Releases: https://github.com/Aetopia/LCLPy/releases
 ```
 pip install PyInstaller
 ```
+OR
+```
+pip install https://github.com/pyinstaller/pyinstaller/archive/develop.zip
+```
 2. Run `build.bat`.
