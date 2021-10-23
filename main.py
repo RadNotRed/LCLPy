@@ -56,4 +56,4 @@ elif args.about == True:
 elif args.ctt == True:
     subprocess.Popen(["start",
                       "https://discord.com/invite/CTT"],
-                     shell=True) 
+                     shell=True)   
