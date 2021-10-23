@@ -1,21 +1,32 @@
+# Modules
 import subprocess
 import os
 import config
+
+# Variables
 USERPROFILE=os.environ['USERPROFILE']
 APPDATA=os.environ['APPDATA']
-def Launch(Version):
+
+# Launch
+def Launch(Version, Server):
+    # Read Values from Options.ini
+    Server = Server.split()
     Java_Path=config.ConfigRead(Version,"Java_Path")
     Directory=config.ConfigRead(Version,"Directory")
     Cosmetics=config.ConfigRead(Version,"Cosmetics")
     Arguments = config.ConfigRead(Version,"Arguments_List")
+
+    # Set the Asset Index
     if Version=="1.7":
         AssetIndex="1.7.10"
     else:
         AssetIndex=Version
+    # Cosmetics Toggle    
     if Cosmetics=="On":
         Cosmetics_Path=USERPROFILE+"\\.lunarclient\\textures"
     else:
         Cosmetics_Path=" "
+    # Launch CMD    
     subprocess.Popen([Java_Path,
                      "--add-modules",
                     "jdk.naming.dns",
@@ -51,6 +62,4 @@ def Launch(Version):
                       "--texturesDir",
                       Cosmetics_Path,
                       "--assetsDir",
-                      APPDATA+"\\.minecraft\\assets"]+Arguments) 
-                     
-                 
+                      APPDATA+"\\.minecraft\\assets"]+Arguments+Server)
