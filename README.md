@@ -1,5 +1,5 @@
 # LCLPy
-LCL's Python Port of [Lunar Client Lite](https://github.com/Aetopia/Lunar-Client-Lite-Launcher).
+Python Port of [Lunar Client Lite](https://github.com/Aetopia/Lunar-Client-Lite-Launcher).
 
 # Information
 Releases: https://github.com/Aetopia/LCLPy/releases    
