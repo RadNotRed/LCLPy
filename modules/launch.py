@@ -7,7 +7,6 @@ import config
 USERPROFILE=os.environ['USERPROFILE']
 APPDATA=os.environ['APPDATA']
 
-# Launch
 def Launch(Version, Server):
     # Read Values from Options.ini
     Server = Server.split()
@@ -26,40 +25,44 @@ def Launch(Version, Server):
         Cosmetics_Path=USERPROFILE+"\\.lunarclient\\textures"
     else:
         Cosmetics_Path=" "
-    # Launch CMD    
-    subprocess.Popen([Java_Path,
-                     "--add-modules",
-                    "jdk.naming.dns",
-                     "--add-exports",
-                    "jdk.naming.dns/com.sun.jndi.dns=java.naming",
-                     "-Djna.boot.library.path="+USERPROFILE+"\\.lunarclient\\offline\\"+Version+"\\natives",
-                     "--add-opens",
-                    "java.base/java.io=ALL-UNNAMED",
-                     "-Djava.library.path="+USERPROFILE+"\\.lunarclient\\offline\\"+Version+"\\natives",
-                     "-cp",
-                     USERPROFILE+"\\.lunarclient\\offline\\"+Version+"\lunar-assets-prod-1-optifine.jar;"
-                      +USERPROFILE+"\\.lunarclient\\offline\\"+Version+"\\lunar-assets-prod-2-optifine.jar;"
-                      +USERPROFILE+"\\.lunarclient\\offline\\"+Version+"\\lunar-assets-prod-3-optifine.jar;"
-                      +USERPROFILE+"\\.lunarclient\\offline\\"+Version+"\\lunar-libs.jar;"
-                      +USERPROFILE+"\\.lunarclient\\offline\\"+Version+"\\lunar-prod-optifine.jar;"
-                      +USERPROFILE+"\\.lunarclient\\offline\\"+Version+"\\OptiFine.jar;"
-                      +USERPROFILE+"\\.lunarclient\\offline\\"+Version+"\\vpatcher-prod.jar",
-                     "com.moonsworth.lunar.patcher.LunarMain",
-                    "--version",
-                      str(Version),
-                    "--accessToken",
-                      "0", 
-                    "--assetIndex",
-                      str(AssetIndex),
-                    "--userProperties",
-                      "{}",
-                    "--gameDir",
-                      Directory,
-                     "--width",
-                      "854",
-                    "--height",
-                      "480",
-                      "--texturesDir",
-                      Cosmetics_Path,
-                      "--assetsDir",
-                      APPDATA+"\\.minecraft\\assets"]+Arguments+Server)
+    # Launch Variable  
+    Launch_1=[Java_Path,
+	"--add-modules",
+	"jdk.naming.dns",
+	"--add-exports",
+	"jdk.naming.dns/com.sun.jndi.dns=java.naming",
+	"-Djna.boot.library.path="+USERPROFILE+"\\.lunarclient\\offline\\"+Version+"\\natives",
+	"--add-opens",
+	"java.base/java.io=ALL-UNNAMED",]
+    Launch_2=["-Djava.library.path="+USERPROFILE+"\\.lunarclient\\offline\\"+Version+"\\natives",
+	"-cp",
+	USERPROFILE+"\\.lunarclient\\offline\\"+Version+"\lunar-assets-prod-1-optifine.jar;"
+	+USERPROFILE+"\\.lunarclient\\offline\\"+Version+"\\lunar-assets-prod-2-optifine.jar;"
+	+USERPROFILE+"\\.lunarclient\\offline\\"+Version+"\\lunar-assets-prod-3-optifine.jar;"
+	+USERPROFILE+"\\.lunarclient\\offline\\"+Version+"\\lunar-libs.jar;"
+	+USERPROFILE+"\\.lunarclient\\offline\\"+Version+"\\lunar-prod-optifine.jar;"
+	+USERPROFILE+"\\.lunarclient\\offline\\"+Version+"\\OptiFine.jar;"
+	+USERPROFILE+"\\.lunarclient\\offline\\"+Version+"\\vpatcher-prod.jar",
+	"com.moonsworth.lunar.patcher.LunarMain",
+	"--version",
+	str(Version),
+	"--accessToken",
+	"0", 
+	"--assetIndex",
+	str(AssetIndex),
+	"--userProperties",
+	"{}",
+	"--gameDir",
+	Directory,
+	"--width",
+	"854",
+	"--height",
+	"480",
+	"--texturesDir",
+	Cosmetics_Path,
+	"--assetsDir",
+	APPDATA+"\\.minecraft\\assets"]
+    Launch=Launch_1+Arguments+Launch_2+Server
+
+    # Launch
+    subprocess.Popen(Launch)
