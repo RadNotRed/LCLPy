@@ -9,22 +9,13 @@ import subprocess
 import os
 
 # Working Directory
-
-# Working Directory as a script.
-Script_Directory=os.getcwd()
-
-# Working Directory when compiled.
 os.chdir(os.path.dirname(sys.executable))
 
        
 #Checks if Options.ini exists or not.
-try:
-    config.ConfigExist()
-except:
-    os.chdir(Script_Directory)
-    config.ConfigExist()
+config.ConfigExist()
 
-# CLI Arguments
+#CLI Arguments
 parser=argparse.ArgumentParser(prog="Lunar Client Lite Python (LCLPy)",
                                description="A debloated, feature rich and CLI based launcher for Lunar Client. Made in Python.",
                                usage="\nLCLPy -v <Version>\nLCLPy -s <Version> <Server IP>")
