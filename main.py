@@ -10,12 +10,11 @@ import os
 
 # Working Directory
 os.chdir(os.path.dirname(sys.executable))
-
-       
+     
 #Checks if Options.ini exists or not.
 config.ConfigExist()
 
-#CLI Arguments
+# CLI Arguments
 parser=argparse.ArgumentParser(prog="Lunar Client Lite Python (LCLPy)",
                                description="A debloated, feature rich and CLI based launcher for Lunar Client. Made in Python.",
                                usage="\nLCLPy -v <Version>\nLCLPy -s <Version> <Server IP>")
