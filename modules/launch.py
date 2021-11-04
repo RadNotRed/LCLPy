@@ -7,14 +7,13 @@ import config
 USERPROFILE=os.environ['USERPROFILE']
 APPDATA=os.environ['APPDATA']
 
-def Launch(Version, Server):
+def Launch(Version, Server, Debug):
     # Read Values from Options.ini
     Server = Server.split()
     Java_Path=config.ConfigRead(Version,"Java_Path")
     Directory=config.ConfigRead(Version,"Directory")
     Cosmetics=config.ConfigRead(Version,"Cosmetics")
     Arguments = config.ConfigRead(Version,"Arguments_List")
-
     # Set the Asset Index
     if Version=="1.7":
         AssetIndex="1.7.10"
@@ -25,6 +24,7 @@ def Launch(Version, Server):
         Cosmetics_Path=USERPROFILE+"\\.lunarclient\\textures"
     else:
         Cosmetics_Path=" "
+        
     # Launch Variable  
     Launch_1=[Java_Path,
 	"--add-modules",
@@ -33,8 +33,9 @@ def Launch(Version, Server):
 	"jdk.naming.dns/com.sun.jndi.dns=java.naming",
 	"-Djna.boot.library.path="+USERPROFILE+"\\.lunarclient\\offline\\"+Version+"\\natives",
 	"--add-opens",
-	"java.base/java.io=ALL-UNNAMED",]
+	"java.base/java.io=ALL-UNNAMED"]
     Launch_2=["-Djava.library.path="+USERPROFILE+"\\.lunarclient\\offline\\"+Version+"\\natives",
+        "-XX:+DisableAttachMechanism",
 	"-cp",
 	USERPROFILE+"\\.lunarclient\\offline\\"+Version+"\lunar-assets-prod-1-optifine.jar;"
 	+USERPROFILE+"\\.lunarclient\\offline\\"+Version+"\\lunar-assets-prod-2-optifine.jar;"
@@ -62,8 +63,24 @@ def Launch(Version, Server):
 	Cosmetics_Path,
 	"--assetsDir",
 	APPDATA+"\\.minecraft\\assets"]
-    Launch=Launch_1+Arguments+Launch_2+Server
 
+    Launch=Launch_1+Arguments+Launch_2+Server
+    
     # Launch
     subprocess.Popen(Launch)
-
+    if Debug == True:
+        print("Version:", Version)
+        print("")
+        print("Launch Directory:")
+        print(Directory)
+        print("")
+        print("JRE Path:")
+        print(Java_Path)
+        print("")
+        print("Arguments:")
+        print(Arguments)
+        print("")
+        print("Launch Command:")
+        print(Launch)
+        while True:
+            pass
