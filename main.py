@@ -9,9 +9,12 @@ import subprocess
 import os
 
 # Working Directory
-# Only enable this, if PyInstaller is being used.
-# os.chdir(os.path.dirname(sys.executable))
-      
+try:
+    os.mkdir(os.environ['APPDATA']+"\\LCLPy")
+except:
+    pass
+os.chdir(os.environ['APPDATA']+"\\LCLPy")
+
 #Checks if Options.ini exists or not.
 config.ConfigExist()
 
