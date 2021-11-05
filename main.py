@@ -9,7 +9,8 @@ import subprocess
 import os
 
 # Working Directory
-os.chdir(os.path.dirname(sys.executable))
+# Only enable this, if PyInstaller is being used.
+# os.chdir(os.path.dirname(sys.executable))
       
 #Checks if Options.ini exists or not.
 config.ConfigExist()
