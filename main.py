@@ -2,13 +2,13 @@
 import sys
 sys.path.insert(1, 'modules')
 import argparse
-import time
 import launch
 import config
 import subprocess
 import os
+import ctypes
 
-# Working Directory
+ctypes.windll.kernel32.SetConsoleTitleW("Lunar Client Lite Python")
 try:
     os.mkdir(os.environ['APPDATA']+"\\LCLPy")
 except:
@@ -52,4 +52,4 @@ elif args.edit == True:
 elif args.s != None:
     launch.Launch(str(args.s[0]), "-server "+args.s[1], False)
 elif args.d != None:
-    launch.Launch(str(args.d[0]), " ", True)
+    launch.Launch(str(args.d[0]), " ", True)  
