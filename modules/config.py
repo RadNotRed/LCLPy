@@ -34,7 +34,7 @@ def ConfigCreate():
         config.write(configfile)
         
 # Read Values from "Options.ini".       
-def ConfigRead(Version, Value):
+def ConfigRead(Version):
     
     ConfigExist()
     config = configparser.ConfigParser()
@@ -78,12 +78,5 @@ def ConfigRead(Version, Value):
         Directory=config['Minecraft']["1.18 Directory"]
         Cosmetics=config['Optimizations']['LC Cosmetics']
 
-    # Return Values    
-    if Value=="Java_Path":    
-        return Java_Path
-    elif Value=="Directory":
-        return Directory
-    elif Value=="Cosmetics":
-        return Cosmetics
-    elif Value=="Arguments_List":
-        return Arguments_List  
+    # Return Values
+    return [Cosmetics, Java_Path, Directory, Arguments_List]
