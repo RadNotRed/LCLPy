@@ -2,6 +2,7 @@
 import subprocess
 import os
 import config
+import ctypes
 
 # Variables
 USERPROFILE=os.environ['USERPROFILE']
@@ -10,23 +11,20 @@ APPDATA=os.environ['APPDATA']
 def Launch(Version, Server, Debug):
     # Read Values from Options.ini
     Server = Server.split()
-    Java_Path=config.ConfigRead(Version,"Java_Path")
-    Directory=config.ConfigRead(Version,"Directory")
-    Cosmetics=config.ConfigRead(Version,"Cosmetics")
-    Arguments = config.ConfigRead(Version,"Arguments_List")
+    Config=config.ConfigRead(Version)
     # Set the Asset Index
     if Version=="1.7":
         AssetIndex="1.7.10"
     else:
         AssetIndex=Version
     # Cosmetics Toggle    
-    if Cosmetics=="On":
+    if Config[0]=="On":
         Cosmetics_Path=USERPROFILE+"\\.lunarclient\\textures"
     else:
         Cosmetics_Path=" "
         
     # Launch Variable  
-    Launch_1=[Java_Path,
+    Launch_1=[Config[1],
 	"--add-modules",
 	"jdk.naming.dns",
 	"--add-exports",
@@ -37,7 +35,7 @@ def Launch(Version, Server, Debug):
     Launch_2=["-Djava.library.path="+USERPROFILE+"\\.lunarclient\\offline\\"+Version+"\\natives",
         "-XX:+DisableAttachMechanism",
 	"-cp",
-	USERPROFILE+"\\.lunarclient\\offline\\"+Version+"\lunar-assets-prod-1-optifine.jar;"
+	USERPROFILE+"\\.lunarclient\\offline\\"+Version+"\\lunar-assets-prod-1-optifine.jar;"
 	+USERPROFILE+"\\.lunarclient\\offline\\"+Version+"\\lunar-assets-prod-2-optifine.jar;"
 	+USERPROFILE+"\\.lunarclient\\offline\\"+Version+"\\lunar-assets-prod-3-optifine.jar;"
 	+USERPROFILE+"\\.lunarclient\\offline\\"+Version+"\\lunar-libs.jar;"
@@ -54,7 +52,7 @@ def Launch(Version, Server, Debug):
 	"--userProperties",
 	"{}",
 	"--gameDir",
-	Directory,
+	Config[2],
 	"--width",
 	"854",
 	"--height",
@@ -64,23 +62,17 @@ def Launch(Version, Server, Debug):
 	"--assetsDir",
 	APPDATA+"\\.minecraft\\assets"]
 
-    Launch=Launch_1+Arguments+Launch_2+Server
+    Launch=Launch_1+Config[3]+Launch_2+Server
     
     # Launch
     subprocess.Popen(Launch)
     if Debug == True:
-        print("Version:", Version)
-        print("")
-        print("Launch Directory:")
-        print(Directory)
-        print("")
-        print("JRE Path:")
-        print(Java_Path)
-        print("")
-        print("Arguments:")
-        print(Arguments)
-        print("")
-        print("Launch Command:")
-        print(Launch)
+        print("Version:", Version+"\n")
+        print("Java Executable:\n"+Config[1]+"\n")
+        print("Launch Directory:\n"+Config[2]+"\n")
+        print("Arguments:\n"+' '.join(map(str,Config[3]))+"\n")
+        print("Launch Command:\n"+' '.join(map(str,Launch)))
         while True:
-            pass
+            print("")
+            subprocess.run(["pause"],shell=True)
+            exit()   
