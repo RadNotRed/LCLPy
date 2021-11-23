@@ -1,4 +1,4 @@
-# LCLPy
+# LCLPy Linux
 <b>[Lunar Client Lite](https://github.com/Aetopia/Lunar-Client-Lite-Launcher) rewritten in Python.</b>
 
 # Information
@@ -7,22 +7,10 @@ Releases: https://github.com/Aetopia/LCLPy/releases
 Wiki/Documentation: https://github.com/Aetopia/LCLPy/wiki
 ## Build
 ### Using Nuitka (Recommended)
-1. Install Nuitka and ZStandard.
-> If using Python `3.9`:
+1. Install Nuitka and CCache.
+> If using Python `3.8`~`3.9`:
 ```
 pip install nuitka
-pip install zstandard
+sudo apt install -y ccache
 ```
-2. Run `build_nuitka.bat`
-
-### Using PyInstaller
-1. Install PyInstaller.
-```
-pip install PyInstaller
-```
- OR
- > If using Python `3.10`:
-```
-pip install https://github.com/pyinstaller/pyinstaller/archive/develop.zip
-```
-2. Run `build_pyinstaller.bat`.
+2. Run `./build.sh` in a terminal window.
