@@ -19,7 +19,8 @@ def ConfigCreate():
                            '1.12 Directory': APPDATA+"\\.minecraft",
                            '1.16 Directory': APPDATA+"\\.minecraft",
                            '1.17 Directory': APPDATA+"\\.minecraft",
-                           '1.18 Directory': APPDATA+"\\.minecraft"
+                           '1.18 Directory': APPDATA+"\\.minecraft",
+                           '1.19 Directory': APPDATA+"\\.minecraft"
                            }
     config['Java'] = {'Arguments': "-Xms3G -Xmx3G -Xmn1G -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1NewSizePercent=20 -XX:G1ReservePercent=20 -XX:MaxGCPauseMillis=50 -XX:G1HeapRegionSize=32M",
                       '1.7 Java': USERPROFILE+"\\.lunarclient\\jre\\zulu17.30.15-ca-fx-jre17.0.1-win_x64\\bin\\javaw.exe",
@@ -28,6 +29,7 @@ def ConfigCreate():
                       '1.16 Java': USERPROFILE+"\\.lunarclient\\jre\\zulu17.30.15-ca-fx-jre17.0.1-win_x64\\bin\\javaw.exe",
                       '1.17 Java': USERPROFILE+"\\.lunarclient\\jre\\zulu17.30.15-ca-fx-jre17.0.1-win_x64\\bin\\javaw.exe",
                       '1.18 Java': USERPROFILE+"\\.lunarclient\\jre\\zulu17.30.15-ca-fx-jre17.0.1-win_x64\\bin\\javaw.exe",
+                      '1.19 Java': USERPROFILE+"\\.lunarclient\\jre\\zulu17.30.15-ca-fx-jre17.0.1-win_x64\\bin\\javaw.exe",
                       }
     config['Optimizations'] = {'LC Cosmetics' : "On"}
     with open('Options.ini', 'w') as configfile:
@@ -76,6 +78,12 @@ def ConfigRead(Version):
     elif Version=="1.18":
         Java_Path=config['Java']["1.18 Java"]
         Directory=config['Minecraft']["1.18 Directory"]
+        Cosmetics=config['Optimizations']['LC Cosmetics']
+        
+    # 1.19    
+    elif Version=="1.19":
+        Java_Path=config['Java']["1.19 Java"]
+        Directory=config['Minecraft']["1.19 Directory"]
         Cosmetics=config['Optimizations']['LC Cosmetics']
 
     # Return Values

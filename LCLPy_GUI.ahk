@@ -25,7 +25,7 @@ Gui, Add, Picture, x128 y50, files/logo.png
 Gui, Add, Button, vLaunch w100 h50 x280 y230 +Default gLaunch, Launch
 Gui, Font, s8
 Gui, Add, CheckBox, x140 y265 vDebug, Debug
-Gui, Add, ListBox, vVersionList h90 w100 x23 y197 gVersionWrite, 1.7|1.8|1.12|1.16|1.17|1.18
+Gui, Add, ListBox, vVersionList h90 w100 x23 y197 gVersionWrite, 1.7|1.8|1.12|1.16|1.17|1.18|1.19
 VersionSelect()
 
 ; Settings
@@ -73,6 +73,10 @@ VersionSelect(){
     Else If (Selected_Version = 1.18) 
 	{
 		GuiControl, Choose, VersionList, 6
+	}
+    Else If (Selected_Version = 1.19) 
+	{
+		GuiControl, Choose, VersionList, 7
 	}
 	return
 }

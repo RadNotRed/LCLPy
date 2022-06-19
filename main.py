@@ -27,7 +27,7 @@ command.add_argument('-v','-version',
                      action="store",
                      nargs=1,
                      metavar=("<Version>"),
-                     help="Version => 1.7/1.8/1.12/1.16/1.17/1.18")
+                     help="Version => 1.7/1.8/1.12/1.16/1.17/1.18/1.19")
 command.add_argument('-d','-debug',
                      action="store",
                      nargs=1,
@@ -38,7 +38,7 @@ command.add_argument('-s','-server',
                      action="store",
                      nargs=2,
                      metavar=("<Version>", "<Server IP>"),
-                     help="Version => 1.7/1.8/1.12/1.16/1.17/1.18")
+                     help="Version => 1.7/1.8/1.12/1.16/1.17/1.18/1.19")
 command.add_argument('-edit',
                      action='store_true',
                      help="Edit LCLPy's Config File.") 
