@@ -1,11 +1,5 @@
-# LCLPy for Windows
-<b>[Lunar Client Lite](https://github.com/Aetopia/Lunar-Client-Lite-Launcher) rewritten in Python.
- 
-### Looking for the Linux Version?  
-Check it out here: https://github.com/Aetopia/LCLPy/tree/linux</b>
-
 # Information
-Releases: https://github.com/Aetopia/LCLPy/releases    
+Releases: https://github.com/RadNotRed/LCLPy/releases    
 
 Wiki/Documentation: https://github.com/Aetopia/LCLPy/wiki
 ## Build
